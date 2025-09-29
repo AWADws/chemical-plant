@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --primary-gradient: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  --secondary-gradient: linear-gradient(135deg, #64748b, #374151);
+  --accent-gradient: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+/* Glass morphism effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Equipment card hover effects */
+.equipment-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.equipment-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Equipment hotspot animations */
+.equipment-hotspot {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  background: rgba(59, 130, 246, 0.8);
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.equipment-hotspot:hover {
+  background: rgba(59, 130, 246, 1);
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+/* 3D Model viewer container */
+.model-viewer {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dark .model-viewer {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-color: #475569;
+}
+
+/* Flow diagram container */
+.flow-diagram {
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .flow-diagram {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+/* Animated elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Process flow lines */
+.process-line {
+  stroke: #3b82f6;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 10, 5;
+  animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .equipment-hotspot {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .hero-section {
+    padding: 3rem 1rem;
+  }
+}
+
+/* Loading animation */
+.loading-spinner {
+  border: 3px solid rgba(59, 130, 246, 0.1);
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Button hover effects */
+.btn-primary {
+  background: var(--primary-gradient);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Text gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8, #1e40af);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Equipment specifications table */
+.spec-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.spec-table td {
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  padding: 12px 16px;
+}
+
+.dark .spec-table td {
+  border-bottom-color: rgba(75, 85, 99, 0.5);
+}
+
+/* 3D Canvas container */
+.canvas-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.canvas-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(59, 130, 246, 0.05) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
